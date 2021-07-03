@@ -11,7 +11,7 @@ class BASE(Cog):
     @command()
     async def start(self,ctx):
         
-        pass
+        return
 
 def setup(client):
     client.add_cog(BASE(client))
