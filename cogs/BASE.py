@@ -21,6 +21,14 @@ class BASE(Cog):
         con.commit()
         await ctx.send("Done ig")
         con.close()
+        
+    @command()
+    async def sqlview(self,ctx,*code):
+        
+        sqlstr = " ".join(code)
+        cur.execute(sqlstr)
+        data = cur.fetchall()
+        await ctx.send(data)
 
 def setup(client):
     client.add_cog(BASE(client))
