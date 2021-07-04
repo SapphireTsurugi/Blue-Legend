@@ -14,8 +14,11 @@ class BASE(Cog):
     @command()
     async def start(self,ctx):
         
-        
         cur.execute(f"SELECT * FROM Main WHERE ID = {ctx.author.id}")
+        if cur.rowcount == 0:
+            await ctx.send("Ok Account will be created.")
+        else:
+            await ctx.send("Want to start over again? Try prestiging.")
         
 
 def setup(client):
