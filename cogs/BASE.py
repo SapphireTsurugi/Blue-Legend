@@ -27,8 +27,11 @@ class BASE(Cog):
         sqlstr = r" ".join(code)
         cur.execute(sqlstr)
         data = cur.fetchall()
-        print(data)
-        print(type(data))
+        msg = ""
+        for i in data:
+            msg+=i
+            msg+="\n"
+        await ctx.send(msg)
 
 def setup(client):
     client.add_cog(BASE(client))
