@@ -11,6 +11,19 @@ class ADMINS(Cog):
 
         self.client = client
 
+    def admin():
+        
+        def predicate(ctx):
+            
+            cur.execute("SELECT * FROM Admins")
+            data = cur.fetchall()
+            admins = []
+            for i in data:
+                admins.append(i[0])
+            return ctx.author.id in admins
+
+        return check(predicate)
+
     @command()
     async def sql(self,ctx,*code):
         
@@ -30,6 +43,12 @@ class ADMINS(Cog):
             msg+=str(i)
             msg+="\n"
         await ctx.send(msg)
+        
+    @command()
+    @admin()
+    asyn def pong(self,ctx):
+        
+        await ctx.send("ping")
 
 def setup(client):
     client.add_cog(ADMINS(client))
