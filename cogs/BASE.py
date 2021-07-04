@@ -16,7 +16,7 @@ class BASE(Cog):
     @command()
     async def sql(self,ctx,*code):
         
-        sqlstr = " ".join(code)
+        sqlstr = r" ".join(code)
         cur.execute(sqlstr)
         con.commit()
         await ctx.send("Done ig")
@@ -25,7 +25,7 @@ class BASE(Cog):
     @command()
     async def sqlview(self,ctx,*code):
         
-        sqlstr = " ".join(code)
+        sqlstr = r" ".join(code)
         cur.execute(sqlstr)
         data = cur.fetchall()
         await ctx.send(data)
