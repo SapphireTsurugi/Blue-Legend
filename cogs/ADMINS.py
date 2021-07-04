@@ -46,7 +46,7 @@ class ADMINS(Cog):
         
     @command()
     @admin()
-    asyn def pong(self,ctx):
+    async def pong(self,ctx):
         
         await ctx.send("ping")
 
