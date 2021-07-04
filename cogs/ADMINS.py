@@ -45,6 +45,7 @@ class ADMINS(Cog):
             msg+=str(i)
             msg+="\n"
         await ctx.send(msg)
+        await ctx.send(cur.rowcount)
 
 def setup(client):
     client.add_cog(ADMINS(client))
