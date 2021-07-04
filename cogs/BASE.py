@@ -29,7 +29,7 @@ class BASE(Cog):
         data = cur.fetchall()
         msg = ""
         for i in data:
-            msg+=i
+            msg+=str(i)
             msg+="\n"
         await ctx.send(msg)
 
