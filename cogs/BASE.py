@@ -27,7 +27,7 @@ class BASE(Cog):
         sqlstr = r" ".join(code)
         cur.execute(sqlstr)
         data = cur.fetchall()
-        await ctx.send(data)
+        await ctx.send(type(data))
 
 def setup(client):
     client.add_cog(BASE(client))
