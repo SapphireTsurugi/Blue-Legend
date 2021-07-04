@@ -18,8 +18,7 @@ class BASE(Cog):
         cur.execute(sqlstr)
         con.commit()
         await ctx.send("Done ig")
-
-con.close()
+        con.close()
 
 def setup(client):
     client.add_cog(BASE(client))
