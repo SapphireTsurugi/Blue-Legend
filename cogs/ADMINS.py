@@ -25,6 +25,7 @@ class ADMINS(Cog):
         return check(predicate)
 
     @command()
+    @admin()
     async def sql(self,ctx,*code):
         
         sqlstr = r" ".join(code)
@@ -33,6 +34,7 @@ class ADMINS(Cog):
         await ctx.send("Done ig")
         
     @command()
+    @admin()
     async def sqlview(self,ctx,*code):
         
         sqlstr = r" ".join(code)
@@ -43,12 +45,6 @@ class ADMINS(Cog):
             msg+=str(i)
             msg+="\n"
         await ctx.send(msg)
-        
-    @command()
-    @admin()
-    async def pong(self,ctx):
-        
-        await ctx.send("ping")
 
 def setup(client):
     client.add_cog(ADMINS(client))
