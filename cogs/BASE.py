@@ -20,7 +20,6 @@ class BASE(Cog):
         cur.execute(sqlstr)
         con.commit()
         await ctx.send("Done ig")
-        con.close()
         
     @command()
     async def sqlview(self,ctx,*code):
