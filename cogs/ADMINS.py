@@ -5,7 +5,7 @@ from discord_components import Button
 con = psycopg2.connect(os.environ.get("DATABASE_URL"))
 cur = con.cursor()
 
-class BASE(Cog):
+class ADMINS(Cog):
 
     def __init__(self,client):
 
@@ -32,4 +32,4 @@ class BASE(Cog):
         await ctx.send(msg)
 
 def setup(client):
-    client.add_cog(BASE(client))
+    client.add_cog(ADMINS(client))
