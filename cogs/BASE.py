@@ -72,6 +72,8 @@ class BASE(Cog):
         
         if user == None:
             user = ctx.author
+            
+        cur.execute("SELECT MHP,ATK,DEF,ARM,WEP,LEVEL,XP")
         
         await ctx.send(user.name)
         
