@@ -46,6 +46,12 @@ class ADMINS(Cog):
             msg+="\n"
         await ctx.send(msg)
         await ctx.send(cur.rowcount)
+        
+    @command()
+    async def rb(self,ctx):
+        
+        cur.execute("ROLLBACK")
+        await ctx.send("Done.")
 
 def setup(client):
     client.add_cog(ADMINS(client))
