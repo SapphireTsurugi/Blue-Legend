@@ -19,8 +19,8 @@ class BASE(Cog):
             cur.execute(f"INSERT INTO Main (ID,HP,MHP,DEF,ATK,ARMOR,WEP,LEVEL,XP,LOCX,LOCY,LOCN,LOCZ,GOLD,GEMS,INV,PRESTIGE,BATTLE,TUT_STATE) VALUES ({ctx.author.id},100,100,10,10,'None','None',1,0,1,1,'The Village',1,0,100,'[]',0,0,0)")
             con.commit()
             embed = discord.Embed(title = "Welcome", color = discord.Color.blue())
-            embed.set_author(name = member)
-            embed.set_thumbnail(url = member.avatar_url)
+            embed.set_author(name = ctx author)
+            embed.set_thumbnail(url = ctx.author.avatar_url)
             embed.add_field(name = "Umm Hello Adventurer. What Can I help you with today?",value = "Used command 1start.",inline = False)
             msg = await ctx.send(embed = embed)
             await asyncio.sleep(3)
@@ -38,8 +38,8 @@ class BASE(Cog):
             
         else:
             embed = discord.Embed(title = "Welcome", color = discord.Color.blue())
-            embed.set_author(name = member)
-            embed.set_thumbnail(url = member.avatar_url)
+            embed.set_author(name = ctx.author)
+            embed.set_thumbnail(url = ctx.author.avatar_url)
             embed.add_field(name = "Umm Hello Adventurer. What Can I help you with today?",value = "Used command 1start.",inline = False)
             msg = await ctx.send(embed = embed)
             await asyncio.sleep(3)
