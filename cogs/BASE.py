@@ -11,12 +11,12 @@ class BASE(Cog):
 
         self.client = client
 
-   def userconvertor(Convertor):
-       def convert(self,ctx,argument):
+    def userconvertor(Convertor):
+        def convert(self,ctx,argument):
            
-           try:
-               if isinstance(argument,discord.Member):
-                   return argument
+            try:
+                if isinstance(argument,discord.Member):
+                    return argument
 
             except:
                 return ctx.message.author
