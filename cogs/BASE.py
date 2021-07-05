@@ -74,6 +74,22 @@ class BASE(Cog):
             user = ctx.author
         
         await ctx.send(user.name)
+        
+    @command(aliases=["hp",stat])
+    async def stats(self,ctx,user = discord.Member = None):
+        
+        if user == None:
+            user = ctx.author
+            
+        cur.execute(f"SELECT HP,MHP,ATK,DEF,ARMOR,WEP FROM Main WHERE ID={ctx.author.id};")
+        data = cur.fetchall()[0]
+        embed = discord.Embed(title="Stats",color=discord.Color.red())
+        embed.set_author(name=ctx.author.name)
+        embed.set_thumbnail(url=ctx.author.avatar_url)
+        embed.add_field(name=f"Hp : {data[0]}/{data[1]}",value=f"Max Hp : {data[1]}",inline=False)
+        embed.add_field(name=f"Attack : {data[2]}",value=f"Defense : {data[3]}",inline=False)
+        embed.add_field(name=f"Armor : {data[4]}",value=f"Weapon : {data[5]}",inline=False)
+        await ctx.send(embed=embed)
             
     @command()
     async def world(self,ctx):
