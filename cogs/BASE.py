@@ -103,11 +103,6 @@ class BASE(Cog):
         embed.add_field(name=f"Attack : {d[2]}",value=f"Defense : {d[3]}",inline=False)
         embed.add_field(name=f"Armor : {d[4]}",value=f"Weapon : {d[5]}",inline=False)
         await ctx.send(embed=embed)
-    
-    @command()
-    async def world(self,ctx):
-        
-        pass
 
 def setup(client):
     client.add_cog(BASE(client))
