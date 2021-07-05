@@ -80,7 +80,7 @@ class BASE(Cog):
         embed.set_author(name=ctx.author.name)
         embed.set_thumbnail(url=ctx.author.avatar_url)
         embed.add_field(name=f"Gold : {d[9]}",value=f"Gems : {d[10]}",inline=False)
-        embed.add_field(name=f"Hp :{ d[0]}/{d[1]}\t\tStamina : {d[4]}/{d[15]}",value=f"Atk : {d[2]}\t\tDef : {d[3]}",inline=False)
+        embed.add_field(name=f"Hp : { d[0]}/{d[1]}\t\tStamina : {d[4]}/{d[15]}",value=f"Atk : {d[2]}\t\tDef : {d[3]}",inline=False)
         embed.add_field(name=f"Armor : {d[4]}",value=f"Weapon : {d[5]}",inline=False)
         embed.add_field(name=f"Location {d[14]}({d[11]},{d[12]})",value = f"Floor : {d[13]}",inline=False)
         exp = xplevel(ctx.author)
