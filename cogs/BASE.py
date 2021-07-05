@@ -74,7 +74,7 @@ class BASE(Cog):
         if user == None:
             user = ctx.author
             
-        cur.execute(f"SELECT HP,MHP,ATK,DEF,STAMINA,ARM,WEP,LEVEL,XP,GOLD,GEM,LOCX,LOCY,LOCZ,LOCN FROM Main WHERE ID={ctx.author.id}")
+        cur.execute(f"SELECT HP,MHP,ATK,DEF,STAMINA,ARMOR,WEP,LEVEL,XP,GOLD,GEM,LOCX,LOCY,LOCZ,LOCN FROM Main WHERE ID={ctx.author.id}")
         d = mycursor.fetchall()[0]
         embed = discord.Embed(title="Profile", description="Do 1inv for inventory.",color = discord.Color.random())
         embed.add_field(name=f"Gold:{d[9]}",value=f"Gems:{d[10]}",inline=False)
