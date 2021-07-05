@@ -55,6 +55,17 @@ class BASE(Cog):
             embed.add_field(name="Maybe are you looking to prestige. Try 1prestige for that. Hope we can meet again soon.",value = "Try using 1prestige command.",inline = False)
             await msg.edit(embed=embed)
         
+    @command(aliases=["tut",])
+    async def tutorial(self,ctx):
+        
+        cur.execute(f"SELECT TUT_STATE FROM Main WHERE ID={ctx.author.id}")
+        data = cur.fetchall()[0]
+        num = data[0]
+        user = ctx.author
+        if num == 1:
+            user.send("Works")
+        else:
+            ctx.send("You completed the tutorial already. You can use 1quests now.")
 
 def setup(client):
     client.add_cog(BASE(client))
