@@ -85,7 +85,7 @@ class BASE(Cog):
         embed.add_field(name=f"Level:{d[7]}",value=f"Exp:{d[8]}/{exp}",inline=False)
         await ctx.send(embed=embed)
         
-    @command(aliases=["hp","stat"])
+    @command(aliases=["hp","stat","stam"])
     async def stats(self,ctx,user : discord.Member = None):
         
         if user == None:
