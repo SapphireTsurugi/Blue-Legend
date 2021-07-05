@@ -81,7 +81,7 @@ class BASE(Cog):
         embed.set_thumbnail(url=ctx.author.avatar_url)
         embed.add_field(name=f"Gold : {d[9]}",value=f"Gems : {d[10]}",inline=False)
         embed.add_field(name=f"Hp :{ d[0]}/{d[1]}\t\tStamina : {d[4]}/{d[15]}",value=f"Atk : {d[2]}\t\tDef : {d[3]}",inline=False)
-        embed.add_field(name=f"Armor : {data[4]}",value=f"Weapon : {data[5]}",inline=False)
+        embed.add_field(name=f"Armor : {d[4]}",value=f"Weapon : {d[5]}",inline=False)
         embed.add_field(name=f"Location {d[14]}({d[11]},{d[12]})",value = f"Floor : {d[13]}",inline=False)
         exp = xplevel(ctx.author)
         embed.add_field(name=f"Level:{d[7]}",value=f"Exp:{d[8]}/{exp}",inline=False)
@@ -95,13 +95,13 @@ class BASE(Cog):
             user = ctx.author
             
         cur.execute(f"SELECT HP,MHP,ATK,DEF,ARMOR,WEP,STAMINA,MSTAM FROM Main WHERE ID={ctx.author.id};")
-        data = cur.fetchall()[0]
+        d = cur.fetchall()[0]
         embed = discord.Embed(title="Stats",color=discord.Color.red())
         embed.set_author(name=ctx.author.name)
         embed.set_thumbnail(url=ctx.author.avatar_url)
-        embed.add_field(name=f"Hp : {data[0]}/{data[1]}",value=f"STAMINA : {data[6]}/{data[7]}",inline=False)
-        embed.add_field(name=f"Attack : {data[2]}",value=f"Defense : {data[3]}",inline=False)
-        embed.add_field(name=f"Armor : {data[4]}",value=f"Weapon : {data[5]}",inline=False)
+        embed.add_field(name=f"Hp : {d[0]}/{d[1]}",value=f"STAMINA : {d[6]}/{d[7]}",inline=False)
+        embed.add_field(name=f"Attack : {d[2]}",value=f"Defense : {d[3]}",inline=False)
+        embed.add_field(name=f"Armor : {d[4]}",value=f"Weapon : {d[5]}",inline=False)
         await ctx.send(embed=embed)
     
     @command()
