@@ -8,7 +8,7 @@ with open("data.json") as f:
 
 client = commands.Bot(command_prefix=['1'],intents=discord.Intents().all())
 
-cogs = ["BASICCMD","ADMINS","BASE"]
+cogs = ["BASICCMD","ADMINS","BASE","WORLD"]
 
 for i in cogs:
     client.load_extension(f"cogs.{i}")
