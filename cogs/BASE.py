@@ -11,6 +11,16 @@ class BASE(Cog):
 
         self.client = client
 
+   def userconvertor(Convertor):
+       def convert(self,ctx,argument):
+           
+           try:
+               if isinstance(argument,discord.Member):
+                   return argument
+
+            except:
+                return ctx.message.author
+
     @command()
     async def start(self,ctx):
         
@@ -66,6 +76,16 @@ class BASE(Cog):
             user.send("Works")
         else:
             ctx.send("You completed the tutorial already. You can use 1quests now.")
+            
+    @command(aliases=["pf",])
+    async def profile(self,ctx,user : userconvertor and discord.Member):
+        
+        await ctx.send(user.avatar_url)
+            
+    @command()
+    async def world(self,ctx):
+        
+        pass
 
 def setup(client):
     client.add_cog(BASE(client))
