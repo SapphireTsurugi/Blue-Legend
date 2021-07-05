@@ -80,7 +80,6 @@ class BASE(Cog):
         embed.add_field(name=f"Hp:{d[0]}/{d[1]}\t\tStamina:{d[4]}",value=f"Atk:{d[2]}\t\tDef:{d[3]}",inline=False)
         exp = fx.xplevel(ctx.author.id)
         embed.add_field(name=f"Level:{d[7]}",value=f"Exp:{d[8]}/{exp}",inline=False)
-        
         await ctx.send(embed=embed)
         
     @command(aliases=["hp","stat"])
