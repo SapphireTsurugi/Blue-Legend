@@ -79,7 +79,7 @@ class BASE(Cog):
         embed = discord.Embed(title="Profile", description="Do 1inv for inventory.",color = discord.Color.random())
         embed.add_field(name=f"Gold:{d[9]}",value=f"Gems:{d[10]}",inline=False)
         embed.add_field(name=f"Hp:{d[0]}/{d[1]}\t\tStamina:{d[4]}",value=f"Atk:{d[2]}\t\tDef:{d[3]}",inline=False)
-        exp = xplevel(ctx.author.id)
+        exp = xplevel(ctx.author)
         embed.add_field(name=f"Level:{d[7]}",value=f"Exp:{d[8]}/{exp}",inline=False)
         await ctx.send(embed=embed)
         
