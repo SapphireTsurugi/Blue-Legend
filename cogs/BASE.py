@@ -70,7 +70,7 @@ class BASE(Cog):
     @command(aliases=["pf",])
     async def profile(self,ctx,user : discord.Member = None):
         
-        if user = None:
+        if user == None:
             user = ctx.author
         
         await ctx.send(user.avatar_url)
