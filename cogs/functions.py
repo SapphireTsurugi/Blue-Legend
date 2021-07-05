@@ -1,4 +1,4 @@
-import discord,json,os,asyncio,psycopg2,fx.py
+import discord,json,os,asyncio,psycopg2
 from discord.ext.commands import *
 from discord_components import Button
 
