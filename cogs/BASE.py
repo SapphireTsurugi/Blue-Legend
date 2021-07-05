@@ -77,6 +77,8 @@ class BASE(Cog):
         cur.execute(f"SELECT HP,MHP,ATK,DEF,STAMINA,ARMOR,WEP,LEVEL,XP,GOLD,GEMS,LOCX,LOCY,LOCZ,LOCN FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
         embed = discord.Embed(title="Profile", description="Do 1inv for inventory.",color = discord.Color.random())
+        embed.set_author(name=ctx.author.name)
+        embed.set_thumbnail(url=ctx.author.avatar_url)
         embed.add_field(name=f"Gold:{d[9]}",value=f"Gems:{d[10]}",inline=False)
         embed.add_field(name=f"Hp:{d[0]}/{d[1]}\t\tStamina:{d[4]}",value=f"Atk:{d[2]}\t\tDef:{d[3]}",inline=False)
         exp = xplevel(ctx.author)
