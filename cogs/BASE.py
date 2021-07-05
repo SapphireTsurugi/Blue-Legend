@@ -75,7 +75,7 @@ class BASE(Cog):
         
         await ctx.send(user.name)
         
-    @command(aliases=["hp",stat])
+    @command(aliases=["hp","stat"])
     async def stats(self,ctx,user = discord.Member = None):
         
         if user == None:
