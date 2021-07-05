@@ -1,7 +1,7 @@
 import discord,json,os,asyncio,psycopg2
 from discord.ext.commands import *
 from discord_components import Button
-from functions.py import *
+from file import *
 
 con = psycopg2.connect(os.environ.get("DATABASE_URL"))
 cur = con.cursor()
