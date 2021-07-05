@@ -49,6 +49,7 @@ class BASE(Cog):
             await asyncio.sleep(5)
             embed.clear_fields()
             embed.add_field(name="You are a popular adventurer throughout the Kingdom and you want to start over?",value ="Used command 1start")
+            await msg.edit(embed=embed)
             await asyncio.sleep(3)
             embed.clear_fields()
             embed.add_field(name="Maybe are you looking to prestige. Try 1prestige for that. Hope we can meet again soon.",value = "Try using 1prestige command.",inline = False)
