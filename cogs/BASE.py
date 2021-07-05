@@ -73,7 +73,7 @@ class BASE(Cog):
         if user == None:
             user = ctx.author
         
-        await ctx.send(user.avatar_url)
+        await ctx.send(user)
             
     @command()
     async def world(self,ctx):
