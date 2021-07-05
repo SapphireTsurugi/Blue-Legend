@@ -73,7 +73,7 @@ class BASE(Cog):
         num = data[0]
         user = ctx.author
         if num == 1:
-            user.send("Works")
+            await user.send("Works")
         else:
             ctx.send("You completed the tutorial already. You can use 1quests now.")
             
