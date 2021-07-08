@@ -1,10 +1,6 @@
 import discord, os, asyncio
 from discord_components import DiscordComponents , Button
 from discord.ext import commands
-import json
-
-with open("data.json") as f:
-    envs = json.load(f)
 
 client = commands.Bot(command_prefix=['1'],intents=discord.Intents().all())
 
@@ -19,4 +15,4 @@ async def on_ready():
     DiscordComponents(client)
     print(f"{client.user.name} has Awoken!")
 
-client.run(envs["Token"], bot=True, reconnect=True)
+client.run(os.environ.get("Token"), bot=True, reconnect=True)
