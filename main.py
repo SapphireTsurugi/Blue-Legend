@@ -2,7 +2,7 @@ import discord, os, asyncio
 from discord_components import DiscordComponents , Button
 from discord.ext import commands
 
-client = commands.Bot(command_prefix=['1'],intents=discord.Intents().all())
+client = commands.Bot(command_prefix=['2'],intents=discord.Intents().all())
 
 cogs = ["BASICCMD","ADMINS"]
 
