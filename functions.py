@@ -14,3 +14,10 @@ def xplevel(user):
         
     else:
         return exp
+
+def buffstolist(buffs):
+    buff = json.loads(buffs)
+    msg = ""
+    for i in buff:
+        msg += str(i)
+        msg += "\n"
