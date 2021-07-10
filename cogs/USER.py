@@ -44,6 +44,7 @@ class BASE(Cog):
         embed.set_author(name=ctx.author.name)
         embed.set_thumbnail(url=ctx.author.avatar_url)
         buffs = buffstolist(d[3])
+        print(buffs)
         embed.add_field(name=f"Money : {d[0]}",value=f"Buffs : {buffs}",inline=False)
         embed.add_field(name=f"Stamina : { d[6]}",value=f"Maximum Stamina : {d[7]}",inline=False)
         exp = xplevel(ctx.author)
