@@ -46,7 +46,7 @@ class BASE(Cog):
         embed.add_field(name=f"Money : {d[0]}",value=f"Buffs : {d[3]}",inline=False)
         embed.add_field(name=f"Stamina : { d[6]}",value=f"Maximum Stamina : {d[7]}",inline=False)
         exp = xplevel(ctx.author)
-        embed.add_field(name=f"Level:{d[1]}",value=f"Exp:{d[2]}/{exp}",inline=False)
+        embed.add_field(name=f"Level : {d[1]}",value=f"Exp : {d[2]}/{exp}",inline=False)
         embed.add_field(name=f"Home : {d[8]}",value=f"Workplace : {d[4]}",inline=False)
         embed.add_field(name=f"Daily Streak : {d[10]}",value=f"Voting Streak : {d[9]}")
         await ctx.send(embed=embed)
