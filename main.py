@@ -4,7 +4,7 @@ from discord.ext import commands
 
 client = commands.Bot(command_prefix=['2'],intents=discord.Intents().all())
 
-cogs = ["BASICCMD","ADMINS"]
+cogs = ["BASICCMD","ADMINS","USER"]
 
 for i in cogs:
     client.load_extension(f"cogs.{i}")
