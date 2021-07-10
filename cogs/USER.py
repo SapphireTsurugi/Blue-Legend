@@ -48,7 +48,7 @@ class BASE(Cog):
         exp = xplevel(ctx.author)
         embed.add_field(name=f"Level:{d[1]}",value=f"Exp:{d[2]}/{exp}",inline=False)
         embed.add_field(name=f"Home : {d[8]}",value=f"Workplace : {d[4]}",inline=False)
-        embed.add_field(name=f"Daily Streak : {d[10]}",value=f"Voting Streak : {d[9]})
+        embed.add_field(name=f"Daily Streak : {d[10]}",value=f"Voting Streak : {d[9]}")
         await ctx.send(embed=embed)
 
 def setup(client):
