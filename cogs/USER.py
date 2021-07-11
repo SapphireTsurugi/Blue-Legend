@@ -61,10 +61,12 @@ class BASE(Cog):
         if d[1]>=24 and d[1]<=48:
             inc = (d[0]*100)+100
             cur.execute(f"UPDATE Main SET DSTREAK=DSTREAK+1,DAILYELAPSED=0,MONEY=MONEY+{inc} WHERE ID={ctx.author.id};")
+            con.commit()
             await ctx.send("DAILY CLAIMED!!")
         elif d[1]>48:
             inc = 100
             cur.execute(f"UPDATE Main SET DSTREAK=0,DAILYELAPSED=0,MONEY=MONEY+{inc} WHERE ID={ctx.author.id};")
+            con.commit()
             await ctx.send("DAILY CLAIMED!!")
         elif d[1]<24:
             t = 24-d[1]
