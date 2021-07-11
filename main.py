@@ -1,8 +1,11 @@
-import discord, os, asyncio
+import discord, os, asyncio,psycopg2
 from discord_components import DiscordComponents , Button
 from discord.ext import commands,tasks
 
 client = commands.Bot(command_prefix=['2'],intents=discord.Intents().all())
+
+con = psycopg2.connect(os.environ.get("DATABASE_URL"))
+cur = con.cursor()
 
 cogs = ["BASICCMD","ADMINS","USER"]
 
