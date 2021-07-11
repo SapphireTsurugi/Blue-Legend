@@ -38,7 +38,7 @@ class BASE(Cog):
         if user == None:
             user = ctx.author
             
-        cur.execute(f"SELECT MONEY,LEVEL,XP,BUFFS,WORKPLACE,INCOME,STAMINA,MSTAMINA,HOUSE,VSTREAK,DSTREAK FROM Main WHERE ID={ctx.author.id}")
+        cur.execute(f"SELECT MONEY,LEVEL,XP,BUFFS,WORKPLACE,INCOME,STAMINA,MSTAMINA,HOUSE,VSTREAK,DSTREAK FROM Main WHERE ID={ctx.author.id};")
         d = cur.fetchall()[0]
         embed = discord.Embed(title="Profile", description="Do 1houses and 1foods for more options.",color = discord.Color.random())
         embed.set_author(name=ctx.author.name)
@@ -52,6 +52,19 @@ class BASE(Cog):
         embed.add_field(name=f"Home : {d[8]}",value=f"Workplace : {d[4]}",inline=False)
         embed.add_field(name=f"Daily Streak : {d[10]}",value=f"Voting Streak : {d[9]}")
         await ctx.send(embed=embed)
+        
+    @command()
+    async def daily(self,ctx):
+        
+        cur.execute(f"SELECT DAILY,DSTREAK FROM Main WHERE ID={ctx.author.id};")
+        d = cur.fetchall()[0]
+        if d[0]:
+            inc = (d[1]*100)+100
+            cur.execute(f"UPDATE Main SET DAILY=False,DSTREAK+=1,MONEY+={inc} WHERE ID={ctx.author.id};")
+            await ctx.send("DAILY CLAIMED!!")
+        
+        else:
+            await ctx.send("No you")
 
 def setup(client):
     client.add_cog(BASE(client))
