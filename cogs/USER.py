@@ -69,8 +69,8 @@ class BASE(Cog):
             con.commit()
             await ctx.send("DAILY CLAIMED!!")
         elif d[1]<1440:
-            t = 1440-d[1]
-            await ctx.send(f"No gotta wait for {t} more minutes.")
+            t = (1440-d[1])//60
+            await ctx.send(f"No gotta wait for {t} more hours.")
 
 def setup(client):
     client.add_cog(BASE(client))
