@@ -1,4 +1,4 @@
-import discord, os, asyncio,psycopg2,topggpy
+import discord, os, asyncio,psycopg2
 from discord_components import DiscordComponents , Button
 from discord.ext import commands,tasks
 
@@ -17,12 +17,7 @@ async def on_ready():
 
     DiscordComponents(client)
     add_time_for_daily.start()
-    print(f"{client.user.name} has Awoken!")
-    
-@client.event()
-async def on_dbl_vote(data):
-    print(vote)
-    print(vote["user"])
+    print(f"{client.user.name} has Awoken")
 
 @tasks.loop(seconds=60)
 async def add_time_for_daily():
