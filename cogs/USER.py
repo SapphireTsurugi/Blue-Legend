@@ -71,6 +71,13 @@ class BASE(Cog):
         elif d[1]<1440:
             t = (1440-d[1])//60
             await ctx.send(f"No gotta wait for {t} more hours.")
+            
+    @command(aliases=["stam",])
+    async def stamina(self,ctx):
+        
+        cur.execute(f"SELECT STAMINA,MSTAMINA FROM Main WHERE ID={ctx.author.id}")
+        d = cur.fetchall()[0]
+        await ctx.send(f"Stamina : {d[0]}/{d[1]}")
 
 def setup(client):
     client.add_cog(BASE(client))
