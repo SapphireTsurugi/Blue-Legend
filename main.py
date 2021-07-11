@@ -20,7 +20,7 @@ async def on_ready():
     print(f"{client.user.name} has Awoken!")
     
 @client.event()
-async def topgg.on_dbl_vote(data):
+async def on_dbl_vote(data):
     print(vote)
     print(vote["user"])
 
