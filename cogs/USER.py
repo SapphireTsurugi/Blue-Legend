@@ -58,16 +58,16 @@ class BASE(Cog):
         
         cur.execute(f"SELECT DSTREAK,DAILYELAPSED FROM Main WHERE ID={ctx.author.id};")
         d = cur.fetchall()[0]
-        if d[2]>=24 and d[2]<=48:
-            inc = (d[1]*100)+100
+        if d[1]>=24 and d[1]<=48:
+            inc = (d[0]*100)+100
             cur.execute(f"UPDATE Main SET DSTREAK=DSTREAK+1,DAILYELAPSED=0,MONEY=MONEY+{inc} WHERE ID={ctx.author.id};")
             await ctx.send("DAILY CLAIMED!!")
-        elif d[2]>48:
+        elif d[1]>48:
             inc = 100
             cur.execute(f"UPDATE Main SET DSTREAK=0,DAILYELAPSED=0,MONEY=MONEY+{inc} WHERE ID={ctx.author.id};")
             await ctx.send("DAILY CLAIMED!!")
-        elif d[2]<24:
-            t = 24-d[2]
+        elif d[1]<24:
+            t = 24-d[1]
             await ctx.send(f"No gotta wait for {t} more hours.")
 
 def setup(client):
