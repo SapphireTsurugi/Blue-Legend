@@ -60,7 +60,7 @@ class BASE(Cog):
         d = cur.fetchall()[0]
         if not d[0]:
             inc = (d[1]*100)+100
-            cur.execute(f"UPDATE Main SET DAILY=False,DSTREAK+=1,MONEY+={inc} WHERE ID={ctx.author.id};")
+            cur.execute(f"UPDATE Main SET DAILY=False,DSTREAK=DSTREAK+1,MONEY=MONEY+{inc} WHERE ID={ctx.author.id};")
             await ctx.send("DAILY CLAIMED!!")
         
         else:
