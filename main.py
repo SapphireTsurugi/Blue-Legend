@@ -7,7 +7,7 @@ client = commands.Bot(command_prefix=['2'],intents=discord.Intents().all())
 con = psycopg2.connect(os.environ.get("DATABASE_URL"))
 cur = con.cursor()
 
-cogs = ["BASICCMD","ADMINS","USER"]
+cogs = ["BASICCMD","ADMINS","USER","BASE"]
 
 for i in cogs:
     client.load_extension(f"cogs.{i}")
