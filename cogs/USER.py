@@ -6,7 +6,7 @@ from functions import *
 con = psycopg2.connect(os.environ.get("DATABASE_URL"))
 cur = con.cursor()
 
-class BASE(Cog):
+class USER(Cog):
 
     def __init__(self,client):
 
@@ -80,4 +80,4 @@ class BASE(Cog):
         await ctx.send(f"Stamina : {d[0]}/{d[1]}")
 
 def setup(client):
-    client.add_cog(BASE(client))
+    client.add_cog(USER(client))
