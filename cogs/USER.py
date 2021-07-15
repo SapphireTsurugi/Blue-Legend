@@ -77,7 +77,7 @@ class USER(Cog):
         
         cur.execute(f"SELECT STAMINA,MSTAMINA,HUNGER,SLEEPINESS FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
-        await ctx.send(f"Stamina : {d[0]}/{d[1]}\nHunger : {d[2]}/100\nSleepiness : {d[3]}")
+        await ctx.send(f"Stamina : {d[0]}/{d[1]}\nHunger : {d[2]}/100\nSleepiness : {d[3]}/100")
 
 def setup(client):
     client.add_cog(USER(client))
