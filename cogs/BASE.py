@@ -20,7 +20,7 @@ class BASE(Cog):
         d = cur.fetchall()[0]
         foods = tolist(d[0])
         if food in foods:
-            cur.execute(f"SELECT STAMINA FROM Foods WHERE FOOD={str(food)}")
+            cur.execute(f"SELECT STAMINA FROM Foods WHERE FOOD=\'{food}\'")
             e = cur.fetchall()[0][0]
             if d[1] == d[2]:
                 await ctx.send("You are already full.")
