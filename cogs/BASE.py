@@ -18,7 +18,7 @@ class BASE(Cog):
         food = " ".join(fdname)
         cur.execute(f"SELECT FOODSOWNED,STAMINA,MSTAMINA FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
-        foods = json.loads(d)
+        foods = json.loads(d[0])
         if food in foods:
             cur.execute(f"SELECT STAMINA FROM Foods WHERE FOOD={food}")
             e = cur.fetchall()[0][0]
