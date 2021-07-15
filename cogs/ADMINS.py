@@ -54,5 +54,13 @@ class ADMINS(Cog):
         cur.execute("ROLLBACK")
         await ctx.send("Done.")
         
+    @command()
+    @admin()
+    async def define(self,ctx,table):
+        
+        cur.execute(f"DESCRIBE \'{table}\';")
+        d = cur.fetchall()
+        await ctx.send(d)
+        
 def setup(client):
     client.add_cog(ADMINS(client))
