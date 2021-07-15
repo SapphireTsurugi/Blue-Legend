@@ -29,11 +29,10 @@ class BASE(Cog):
                     f = d[1] + e
                 else:
                     f = d[2]
-                cur.execute(f"UPDATE Main SET STAMINA={f} WHERE ID={ctx.author.id}")
+                foods.remove(food)
+                cur.execute(f"UPDATE Main SET STAMINA={f},HUNGER=HUNGER+10,FOODSOWNED={foods} WHERE ID={ctx.author.id}")
                 con.commit()
-                cur.execute(f"UPDATE Main SET HUNGER=HUNGER+10 WHERE ID={ctx.author.id}")
-                con.commit()
-                await ctx.send("Ate")
+                await ctx.send("*Burp* Shhh! Dont Burp loudly.")
 
         else:
             await ctx.send("Either that food dont exist or you dont have it. Go buy it.")
