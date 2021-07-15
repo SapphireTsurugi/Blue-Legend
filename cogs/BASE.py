@@ -13,8 +13,27 @@ class BASE(Cog):
         self.client = client
 
     @command()
-    async def eat(self,ctx):
-        pass
+    async def eat(self,ctx,*fdname):
+        
+        food = " ".join(fdname)
+        cur.execute(f"SELECT FOODSOWNED,STAMINA,MSTAMINA FROM Main WHERE ID={ctx.author.id}")
+        d = cur.fetchall()[0]
+        foods = json.loads(d)
+        if food in foods:
+            cur.execute(f"SELECT STAMINA FROM Foods WHERE FOOD={food}")
+            e = cur.fetchall()[0][0]
+            if d[1] == d[2]:
+                await ctx.send("You are already full.")
+            elif d[1] < d[2]:
+                if d[1] + e <= d[2]:
+                    f = d[1] + e
+                else:
+                    f = d[2]
+                cur.execute(f"UPDATE Main SET STAMINA={f} WHERE ID={ctx.author.id}")
+                con.commit()
+                await ctx.send("Ate")
+        else:
+            await ctx.send("Either that food dont exist or you dont have it. Go buy it.")
 
 def setup(client):
     client.add_cog(BASE(client))
