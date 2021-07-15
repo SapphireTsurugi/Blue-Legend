@@ -70,6 +70,8 @@ class BASE(Cog):
             return
         f = d[1] - e[1]
         cur.execute(f"UPDATE Main SET STAMINA={f},MONEY=MONEY+{e[0]} WHERE ID={ctx.author.id}")
+        con.commit()
+        await ctx.send("Worked")
 
 def setup(client):
     client.add_cog(BASE(client))
