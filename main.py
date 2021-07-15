@@ -20,8 +20,10 @@ async def on_ready():
     print(f"{client.user.name} has Awoken")
 
 @tasks.loop(seconds=60)
-async def add_time_for_daily():
+async def add_time():
     cur.execute("UPDATE Main SET DAILYELAPSED=DAILYELAPSED+1")
+    cur.execute("UPDATE Main SET HUNGER=HUNGER-10 WHERE HUNGER>10")
+    cur.execute("UPDATE Main SET SLEEPINESS=SLEEPINESS-10 WHERE HUNGER>10")
     con.commit()
     
 client.run(os.environ.get("Token"), bot=True, reconnect=True)
