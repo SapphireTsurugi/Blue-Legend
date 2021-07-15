@@ -55,6 +55,21 @@ class BASE(Cog):
             cur.execute(f"UPDATE Main SET STAMINA={f},SLEEPINESS=SLEEPINESS+10 WHERE ID={ctx.author.id}")
             con.commit()
             await ctx.send("Wakey wakey, YOU ARE LATE!.")
+            
+    @command()
+    async def work(self,ctx):
+        
+        cur.execute(f"SELECT JOB,STAMINA FROM Main WHERE ID={ctx.author.id}")
+        d = cur.fetchall()[0]
+        cur.execute(f"SELECT INCOME,STAMINA,TIER FROM Jobs WHERE JOB={d[0]}")
+        e = cur.fetchall()[0]
+        if d[1] >= e[1]:
+            pass
+        else:
+            await ctx.send("You worked so hard already. Get some sleep and eat.")
+            return
+        f = d[1] - e[1]
+        cur.execute(f"UPDATE Main SET STAMINA={f},MONEY=MONEY+{e[0]} WHERE ID={ctx.author.id}")
 
 def setup(client):
     client.add_cog(BASE(client))
