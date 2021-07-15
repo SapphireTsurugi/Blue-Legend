@@ -24,7 +24,7 @@ class BASE(Cog):
             e = cur.fetchall()[0][0]
             if d[1] == d[2] or d[3] > 90:
                 await ctx.send("You are already full.")
-            elif d[1] < d[2] and d[3] < 90:
+            elif d[1] < d[2] and d[3] <= 90:
                 if d[1] + e <= d[2]:
                     f = d[1] + e
                 else:
@@ -34,6 +34,7 @@ class BASE(Cog):
                 cur.execute(f"UPDATE Main SET HUNGER=HUNGER+10 WHERE ID={ctx.author.id}")
                 con.commit()
                 await ctx.send("Ate")
+
         else:
             await ctx.send("Either that food dont exist or you dont have it. Go buy it.")
 
