@@ -33,6 +33,10 @@ class BASE(Cog):
                 con.commit()
                 await ctx.send("Ate")
         else:
+            list1 = ["Pizza"]
+            a = json.dumps(list1)
+            cur.execute(f"UPDATE Main SET FOODSOWNED={a}")
+            con.commit()
             await ctx.send("Either that food dont exist or you dont have it. Go buy it.")
 
 def setup(client):
