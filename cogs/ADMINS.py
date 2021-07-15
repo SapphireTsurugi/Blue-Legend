@@ -54,12 +54,5 @@ class ADMINS(Cog):
         cur.execute("ROLLBACK")
         await ctx.send("Done.")
         
-    @command()
-    @admin()
-    async def sqll(self,ctx,table,what,one,two : int,items):
-        item = tostring(items)
-        cur.execute(f"UPDATE {table} SET {what}={item} WHERE {one}={two}")
-        await ctx.send("Done.")
-        
 def setup(client):
     client.add_cog(ADMINS(client))
