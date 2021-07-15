@@ -55,7 +55,7 @@ class ADMINS(Cog):
         
     @command()
     @admin()
-    async def sqll(self,ctx,table,what,one,two,items):
+    async def sqll(self,ctx,table,what,one,two : int,items):
         item = tostring(items)
         cur.execute(f"UPDATE {table} SET {what}={item} WHERE {one}={two}")
         await ctx.send("Done.")
