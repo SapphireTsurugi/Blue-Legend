@@ -17,7 +17,7 @@ class USER(Cog):
         cur.execute("ROLLBACK")
         cur.execute(f"SELECT * FROM Main WHERE ID = {ctx.author.id}")
         if cur.rowcount == 0:
-            cur.execute(f"INSERT INTO Main (ID,MONEY,LEVEL,XP,BUFFS,WORKPLACE,STAMINA,MSTAMINA,HOUSE,HOUSESOWNED,FOODSOWNED,WSTREAK,DSTREAK,DAILY,DAILYELAPSED,VOTE,VSTREAK,HUNGER,SLEEPINESS) VALUES ({ctx.author.id},0,1,0,'[]','Fast Food',10,10,True,'Homeless','[]','[]',0,0,False,0,False,0,70,70);")
+            cur.execute(f"INSERT INTO Main (ID,MONEY,LEVEL,XP,BUFFS,JOB,STAMINA,MSTAMINA,HOUSE,HOUSESOWNED,FOODSOWNED,WSTREAK,DSTREAK,DAILY,DAILYELAPSED,VOTE,VSTREAK,HUNGER,SLEEPINESS) VALUES ({ctx.author.id},0,1,0,'[]','Fast Food',10,10,True,'Homeless','','',0,0,False,24,False,0,70,70);")
             con.commit()
             embed = discord.Embed(title = "Welcome", color = discord.Color.blue())
             embed.set_author(name = ctx.author)
@@ -58,7 +58,7 @@ class USER(Cog):
         
         cur.execute(f"SELECT DSTREAK,DAILYELAPSED FROM Main WHERE ID={ctx.author.id};")
         d = cur.fetchall()[0]
-        if d[1]>=1440 and d[1]<=2060:
+        if d[1]>=1440 and d[1]<=2880:
             inc = (d[0]*50)+100
             cur.execute(f"UPDATE Main SET DSTREAK=DSTREAK+1,DAILYELAPSED=0,MONEY=MONEY+{inc} WHERE ID={ctx.author.id};")
             con.commit()
