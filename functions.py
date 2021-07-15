@@ -21,3 +21,11 @@ def buffstolist(buffs):
     for i in buff:
         msg += str(i)
         msg += "\n"
+        
+def 2list(str2):
+    list2 = str2.split(",")
+    return list2
+
+def 2str(list2):
+    str2 = ",".join(list2)
+    return str2
