@@ -72,12 +72,12 @@ class USER(Cog):
             t = (1440-d[1])//60
             await ctx.send(f"No gotta wait for {t} more hours.")
             
-    @command(aliases=["stam",])
+    @command(aliases=["stam","hunger","sleepiness"])
     async def stamina(self,ctx):
         
-        cur.execute(f"SELECT STAMINA,MSTAMINA FROM Main WHERE ID={ctx.author.id}")
+        cur.execute(f"SELECT STAMINA,MSTAMINA,HUNGER,SLEEPINESS FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
-        await ctx.send(f"Stamina : {d[0]}/{d[1]}")
+        await ctx.send(f"Stamina : {d[0]}/{d[1]}\nHunger : {d[2]}/100\nSleepiness : {d[3]}")
 
 def setup(client):
     client.add_cog(USER(client))
