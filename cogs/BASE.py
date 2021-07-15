@@ -30,7 +30,8 @@ class BASE(Cog):
                 else:
                     f = d[2]
                 foods.remove(food)
-                cur.execute(f"UPDATE Main SET STAMINA={f},HUNGER=HUNGER+10,FOODSOWNED=\'{foods}\' WHERE ID={ctx.author.id}")
+                fooods = tostring(foods)
+                cur.execute(f"UPDATE Main SET STAMINA={f},HUNGER=HUNGER+10,FOODSOWNED=\'{fooods}\' WHERE ID={ctx.author.id}")
                 con.commit()
                 await ctx.send("*Burp* Shhh! Dont Burp loudly.")
 
