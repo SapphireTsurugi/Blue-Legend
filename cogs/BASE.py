@@ -18,7 +18,7 @@ class BASE(Cog):
         food = " ".join(fdname)
         cur.execute(f"SELECT FOODSOWNED,STAMINA,MSTAMINA FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
-        foods = json.loads(d[0])
+        foods = tolist(d[0])
         if food in foods:
             cur.execute(f"SELECT STAMINA FROM Foods WHERE FOOD={food}")
             e = cur.fetchall()[0][0]
@@ -33,10 +33,6 @@ class BASE(Cog):
                 con.commit()
                 await ctx.send("Ate")
         else:
-            list1 = ["Pizza"]
-            a = json.dumps(list1)
-            cur.execute(f"UPDATE Main SET FOODSOWNED={a}")
-            con.commit()
             await ctx.send("Either that food dont exist or you dont have it. Go buy it.")
 
 def setup(client):
