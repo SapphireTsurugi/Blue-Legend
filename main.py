@@ -16,7 +16,7 @@ for i in cogs:
 async def on_ready():
 
     DiscordComponents(client)
-    add_time_for_daily.start()
+    add_time.start()
     print(f"{client.user.name} has Awoken")
 
 @tasks.loop(seconds=60)
