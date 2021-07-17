@@ -76,6 +76,20 @@ class USER(Cog):
         cur.execute(f"SELECT STAMINA,MSTAMINA,HUNGER,SLEEPINESS FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
         await ctx.send(f"Stamina : {d[0]}/{d[1]}\nHunger : {d[2]}/100\nSleepiness : {d[3]}/100")
+        
+    @command()
+    async def foods(self,ctx,page:int =1):
+        
+        cur.execute(f"SELECT FOODS FROM Main WHERE ID={ctx.author.id}")
+        d = cur.fetchall()[0][0]
+        foods = tolist(d)
+        embed = discord.Embed(title="Foods.", description="Foods that have been bought from shop is show here." , color =discord.Color.green())
+        if len(foods)==0:
+            embed.add_field(name="It is empty as your pocket.",value="Buy food from the shop.",inline=False)
+            await ctx.send(embed)
+            return
+        set1 = set(foods)
+        
 
 def setup(client):
     client.add_cog(USER(client))
