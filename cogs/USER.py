@@ -17,7 +17,7 @@ class USER(Cog):
         cur.execute("ROLLBACK")
         cur.execute(f"SELECT * FROM Main WHERE ID = {ctx.author.id}")
         if cur.rowcount == 0:
-            cur.execute(f"INSERT INTO Main (ID,MONEY,LEVEL,XP,BUFFS,JOB,STAMINA,MSTAMINA,HOUSE,HOUSESOWNED,FOODSOWNED,WSTREAK,DSTREAK,DAILY,DAILYELAPSED,VOTE,VSTREAK,HUNGER,SLEEPINESS) VALUES ({ctx.author.id},0,1,0,'[]','Fast Food',10,10,True,'Homeless','','',0,0,False,24,False,0,70,70);")
+            cur.execute(f"INSERT INTO Main (ID,MONEY,LEVEL,XP,BUFFS,JOB,STAMINA,MSTAMINA,HOUSE,HOUSESOWNED,FOODSOWNED,WSTREAK,DSTREAK,DAILYELAPSED,VSTREAK,HUNGER,SLEEPINESS) VALUES ({ctx.author.id},0,1,0,'[]','Fast Food',10,10,True,'Homeless','','',0,0,24,0,70,70);")
             con.commit()
             embed = discord.Embed(title = "Welcome", color = discord.Color.blue())
             embed.set_author(name = ctx.author)
