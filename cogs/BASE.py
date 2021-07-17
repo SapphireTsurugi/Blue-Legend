@@ -1,4 +1,4 @@
-import discord,json,os,asyncio,psycopg2
+import discord,json,os,asyncio,psycopg2,random
 from discord.ext.commands import *
 from discord_components import Button
 from functions import *
@@ -59,7 +59,7 @@ class BASE(Cog):
     @command()
     async def work(self,ctx):
         
-        cur.execute(f"SELECT JOB,STAMINA,BUFF1T,BUFF2T,BUFF3T FROM Main WHERE ID={ctx.author.id}")
+        cur.execute(f"SELECT JOB,STAMINA,BUFF1T,BUFF2T,BUFF3T,XP,LEVEL FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
         
         gb,eb,sb = 1,1,1
@@ -78,11 +78,19 @@ class BASE(Cog):
         else:
             await ctx.send("You worked so hard already. Get some sleep and eat.")
             return
+
         f = d[1] - js
         moni = e[0]*gb
+        exp = random.randint(200)
+        xp = exp + (d[5]*eb)
+        if levelupcheck(xp,d[6]):
+            cur.execute(f"UPDATE Main SET LEVEL=LEVEL+1,XP=0 WHERE ID={ctx.author.id}")
+            await ctx.send("Levelled Up!")
+        else:
+            cur.execute(f"UPDATE Main SET XP={xp} WHERE ID={ctx.author.id}")
         cur.execute(f"UPDATE Main SET STAMINA={f},MONEY=MONEY+{moni} WHERE ID={ctx.author.id}")
         con.commit()
-        await ctx.send("Worked")
+        await ctx.send(f"Worked and got {moni} gold.")
 
 def setup(client):
     client.add_cog(BASE(client))
