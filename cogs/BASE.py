@@ -59,17 +59,28 @@ class BASE(Cog):
     @command()
     async def work(self,ctx):
         
-        cur.execute(f"SELECT JOB,STAMINA FROM Main WHERE ID={ctx.author.id}")
+        cur.execute(f"SELECT JOB,STAMINA,BUFF1T,BUFF2T,BUFF3T FROM Main WHERE ID={ctx.author.id}")
         d = cur.fetchall()[0]
+        
+        gb,eb,sb = 1,1,1
+        if d[2] != 0:
+            gb = 1.5
+        if d[3] != 0:
+            eb = 1.5
+        if d[4] != 0:
+            sb = 0.75
+        
         cur.execute(f"SELECT INCOME,STAMINA,TIER FROM Jobs WHERE JOB=\'{d[0]}\'")
         e = cur.fetchall()[0]
-        if d[1] >= e[1]:
+        js = e[1] * sb
+        if d[1] >= js:
             pass
         else:
             await ctx.send("You worked so hard already. Get some sleep and eat.")
             return
-        f = d[1] - e[1]
-        cur.execute(f"UPDATE Main SET STAMINA={f},MONEY=MONEY+{e[0]} WHERE ID={ctx.author.id}")
+        f = d[1] - js
+        moni = e[0]*gb
+        cur.execute(f"UPDATE Main SET STAMINA={f},MONEY=MONEY+{moni} WHERE ID={ctx.author.id}")
         con.commit()
         await ctx.send("Worked")
 
